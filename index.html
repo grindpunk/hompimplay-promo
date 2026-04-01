@@ -127,6 +127,7 @@ function validate(){
 }
 
 function triggerValidated(){
+  console.log("TRIGGER KEKIRIM");
   if(!validate()){
     swipeThumb.style.left='5px';
     swipeLabel.style.opacity='1';
@@ -149,7 +150,10 @@ function triggerValidated(){
     headers: {
       "Content-Type": "application/json"
     }
-  });
+  })
+  .then(res => res.text())
+  .then(res => console.log("SUCCESS:", res))
+  .catch(err => console.error("ERROR:", err));
 
   const now=new Date();
   const timeStr=now.toLocaleString('id-ID',{
