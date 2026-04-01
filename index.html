@@ -141,6 +141,7 @@ function triggerValidated(){
   // 🔥 kirim ke Google Sheets
   fetch("https://script.google.com/macros/s/AKfycbwCLGRFx3dpAJ8xb_Znqo6LV4Br-RyMbOAo2QfIX34FeKnWDo4Gg2ugM6h3O3NvdIRh/exec", {
     method: "POST",
+    mode: "no-cors",
     body: JSON.stringify({
       nama: name,
       phone: phone,
@@ -171,8 +172,10 @@ function triggerValidated(){
   document.getElementById('v-total').textContent=fmt(total);
   document.getElementById('v-time').textContent='Divalidasi: '+timeStr+' WIB';
 
-  formCard.style.display='none';
-  validatedCard.style.display='block';
+  setTimeout(() => {
+    formCard.style.display='none';
+    validatedCard.style.display='block';
+  }, 500);
 }
 
 function getX(e){return e.touches?e.touches[0].clientX:e.clientX;}
