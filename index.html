@@ -197,6 +197,7 @@ const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwYVAna0765mIsS8vf2T
 function sendToSheet(ticket) {
   fetch(SCRIPT_URL, {
     method: "POST",
+    mode: "no-cors",
     body: JSON.stringify({ ticket: ticket }),
     headers: {
       "Content-Type": "application/json"
